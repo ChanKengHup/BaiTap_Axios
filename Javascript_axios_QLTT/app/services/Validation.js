@@ -71,5 +71,49 @@ function Validation() {
             return false
         }
     }
+    this.checkLoaiND = function (value, spanId, message) {
+        if(value === "Chọn loại người dùng") {
+            document.getElementById(spanId).innerHTML = message
+            document.getElementById(spanId).style.display = "block"
+            return false
+        }
+     
+        else {
+            document.getElementById(spanId).innerHTML = ''
+            document.getElementById(spanId).style.display = "none"
+            return true
+        }
+    }
+    this.checkNN = function (value, spanId, message) {
+        if(value === "Chọn ngôn ngữ") {
+            document.getElementById(spanId).innerHTML = message
+            document.getElementById(spanId).style.display = "block"
+            return false
+        }
+     
+        else {
+            document.getElementById(spanId).innerHTML = ''
+            document.getElementById(spanId).style.display = "none"
+            return true
+        }
+    }
+    this.checkLength = function(value, spanId, message) {
+        
+        if(value.length <= 60) {
+            document.getElementById(spanId).innerHTML = ''
+            document.getElementById(spanId).style.display = "none"
+            return true
+        }
+        else if(value = '') {
+            document.getElementById(spanId).innerHTML = ''
+            document.getElementById(spanId).style.display = "none"
+            return true
+        }
+        else {
+            document.getElementById(spanId).innerHTML = message
+            document.getElementById(spanId).style.display = "block"
+            return false
+        }
+    }
     
 }

@@ -77,19 +77,29 @@ function addCourse() {
 
 
     let storeCourses = JSON.parse(localStorage.getItem("courseUser") ) 
-    console.log(storeCourses);
 
     let isValid = true
     // tài khoản
     isValid &= validation.checkEmpty(taiKhoan, "tbAccount", "Vòng lòng nhập trường này") && validation.checkAccount(taiKhoan, "tbAccount", "Tài khoản đã tồn tại",storeCourses)
     // Họ tên
     isValid &= validation.checkEmpty(hoTen,"tbName", "Vòng lòng nhập trường này") && validation.checkName(hoTen,"tbName", "Họ tên chỉ chứ các kí tự chữ")
+    // password 
+    isValid &= validation.checkEmpty(matKhau, "tbPassword", "Vui lòng nhập mật khẩu") && validation.checkPassword(matKhau, "tbPassword", "Mật khẩu phải có ít nhất 1 ký tự hoa, 1 kí tự đặc biệt, 1 kí tự số và độ dài 6-8")
+    // email
+    isValid &= validation.checkEmpty(email,"tbEmail", "Vòng lòng nhập trường này") && validation.checkEmail(email, "tbEmail", "Vui lòng nhập đúng định dạng email")
+    // hình ảnh 
+    isValid &= validation.checkEmpty(hinhAnh, "tbImage", "Vui lòng nhập trường này")
+    // chọn ND 
+    isValid &= validation.checkLoaiND(loaiND, "tbTypePepke", "Vui lòng chọn người dùng")
+    // chọn NN
+    isValid &= validation.checkNN(ngonNgu, "tbLanguage", "Vui lòng chọn ngôn ngữ")
+    // mo ta 
+    isValid &= validation.checkEmpty(moTa,"tbDescribe", "Vui lòng nhập trường này") && validation.checkLength(moTa,"tbDescribe", "Trường này nhập tối thiểu 60")
 
     if(isValid) {
         courseApi.pushData(course)
         .then((result) => {
             getCourse()
-            console.log(result.data);
         })
         document.querySelector("#myModal .close").click()
     }
