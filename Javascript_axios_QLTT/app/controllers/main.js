@@ -52,7 +52,8 @@ document.querySelector("#myModal .close").onclick = function () {
    document.getElementById("Email").value = ''; 
     document.getElementById("HinhAnh").value = ''; 
     document.getElementById("MoTa").value = ''; 
-
+    document.getElementById("loaiNguoiDung").value = 'Chọn loại người dùng';
+    document.getElementById("loaiNgonNgu").value = 'Chọn ngôn ngữ';
 }
 // Lưu dữ liệu để kiêm tra tài khoản 
 function storeCourse() {
